@@ -59,7 +59,7 @@ namespace Web.Player.Commons.TimeLine
     private void HorizontalThumbDragDelta(object sender, DragDeltaEventArgs e)
     {
       _lastEventReceived = DateTime.Now;
-      if(_lastEventReceived - _lastEventSend > TimeSpan.FromMilliseconds(400))
+      if(_lastEventReceived - _lastEventSend > TimeSpan.FromMilliseconds(100))
       {
         if (Seek != null)
           Seek(this, new PositionEventArgs(Value));

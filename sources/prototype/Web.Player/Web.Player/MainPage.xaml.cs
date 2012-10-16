@@ -19,7 +19,7 @@ namespace Web.Player
 {
   public partial class MainPage : UserControl
   {
-    readonly IsolatedStorageSettings _userSettings = IsolatedStorageSettings.ApplicationSettings;
+    private readonly IsolatedStorageSettings _userSettings = IsolatedStorageSettings.ApplicationSettings;
 
     private readonly DispatcherTimer _nomousemoveTimer = new DispatcherTimer();
     private readonly double _layoutWidth;
@@ -31,8 +31,8 @@ namespace Web.Player
     {
       InitializeComponent();
       //Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/bbt/3/bbts03E01/bbts03E01.ism/manifest");
-      //Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest");
-      Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/Gladiator/gladiator.ism/manifest");
+      Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest");
+      //Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/Gladiator/gladiator.ism/manifest");
       Player.MediaElement.AutoPlay = true;
       Player.MediaElement.MediaOpened += MediaElementMediaOpened;
       Player.MediaElement.MediaEnded += MediaElementMediaEnded;
@@ -54,7 +54,7 @@ namespace Web.Player
 
       TimeLine.FullScreenToggled += TimeLineFullScreenToggled;
       TimeLine.PlayButtonPressed += TimeLinePlayButtonPressed;
-      
+
       MouseWheel += MainPageMouseWheel;
 
       Application.Current.Exit += CurrentExit;
@@ -62,12 +62,11 @@ namespace Web.Player
 
       _layoutWidth = LayoutRoot.Width;
       _layoytHeight = LayoutRoot.Height;
-
     }
 
-    void MainPageMouseWheel(object sender, MouseWheelEventArgs e)
+    private void MainPageMouseWheel(object sender, MouseWheelEventArgs e)
     {
-      if(e.Delta > 0)
+      if (e.Delta > 0)
         Player.MediaElement.Volume += 0.1;
       else
         Player.MediaElement.Volume -= 0.1;
@@ -83,7 +82,8 @@ namespace Web.Player
       TimeLine.Slider.Maximum = Player.MediaElement.EndPosition.Ticks;
       TimeLine.EndPositionText.Text = TimespanToString(Player.MediaElement.EndPosition);
       var storedPosition = StorePosition();
-      if (storedPosition != null && storedPosition != Player.MediaElement.EndPosition && storedPosition != TimeSpan.FromSeconds(0))
+      if (storedPosition != null && storedPosition != Player.MediaElement.EndPosition &&
+          storedPosition != TimeSpan.FromSeconds(0))
       {
         CustomMessageBox box = new CustomMessageBox();
         box.Title = "Reprise lecture...";
@@ -91,9 +91,9 @@ namespace Web.Player
         box.Show();
         box.Closed += (s, a) =>
                         {
-                          if((bool) (s as CustomMessageBox).DialogResult)
+                          if ((bool) (s as CustomMessageBox).DialogResult)
                           {
-                            Player.MediaElement.Position = ((TimeSpan)storedPosition) - TimeSpan.FromSeconds(5);
+                            Player.MediaElement.Position = ((TimeSpan) storedPosition) - TimeSpan.FromSeconds(5);
                             Player.MediaElement.Play();
                           }
                           else
@@ -104,21 +104,21 @@ namespace Web.Player
       }
     }
 
-    void MediaElementMediaEnded(object sender, RoutedEventArgs e)
+    private void MediaElementMediaEnded(object sender, RoutedEventArgs e)
     {
       TimeLine.Slider.Value = 0;
     }
 
-    void MediaElementPositionChanged(object sender, PositionEventArgs e)
+    private void MediaElementPositionChanged(object sender, PositionEventArgs e)
     {
       if (!_isSeek)
       {
         TimeLine.Slider.Position = e.Position;
       }
-      TimeLine.CurrentPositionText.Text = TimespanToString(TimeSpan.FromTicks((long)e.Position));
+      TimeLine.CurrentPositionText.Text = TimespanToString(TimeSpan.FromTicks((long) e.Position));
     }
 
-    void MediaElementCurrentStateChanged(object sender, RoutedEventArgs e)
+    private void MediaElementCurrentStateChanged(object sender, RoutedEventArgs e)
     {
       switch (Player.MediaElement.CurrentState)
       {
@@ -151,19 +151,19 @@ namespace Web.Player
       Player.MediaElement.Position = TimeSpan.FromTicks((long) e.Position);
     }
 
-    void SliderBarClick(object sender, PositionEventArgs e)
+    private void SliderBarClick(object sender, PositionEventArgs e)
     {
       Player.MediaElement.Position = TimeSpan.FromTicks((long) e.Position);
     }
 
-    void TimeLineFullScreenToggled(object sender, RoutedEventArgs e)
+    private void TimeLineFullScreenToggled(object sender, RoutedEventArgs e)
     {
       ToggleFullScreen();
     }
 
-    void TimeLinePlayButtonPressed(object sender, RoutedEventArgs e)
+    private void TimeLinePlayButtonPressed(object sender, RoutedEventArgs e)
     {
-      if(Player.MediaElement.CurrentState == SmoothStreamingMediaElementState.Playing)
+      if (Player.MediaElement.CurrentState == SmoothStreamingMediaElementState.Playing)
         Player.MediaElement.Pause();
       else
       {
@@ -173,25 +173,22 @@ namespace Web.Player
 
     #endregion
 
-    void NomousemoveTimerTick(object sender, EventArgs e)
+    private void NomousemoveTimerTick(object sender, EventArgs e)
     {
       TimeLineAnimationHide.Begin();
-      TimeLineAnimationHide.Completed += (s, a) =>
-                                       {
-                                         Cursor = Cursors.None;
-                                       };
+      TimeLineAnimationHide.Completed += (s, a) => { Cursor = Cursors.None; };
       _nomousemoveTimer.Stop();
     }
 
-    void MainPageMouseMove(object sender, MouseEventArgs e)
+    private void MainPageMouseMove(object sender, MouseEventArgs e)
     {
       _nomousemoveTimer.Stop();
       _nomousemoveTimer.Start();
 
-      if(!Equals(Cursor, Cursors.Arrow))
+      if (!Equals(Cursor, Cursors.Arrow))
         Cursor = Cursors.Arrow;
 
-      if(!Equals(TimeLine.Opacity, 1))
+      if (!Equals(TimeLine.Opacity, 1))
       {
         TimeLine.Opacity = 1;
       }
@@ -204,7 +201,7 @@ namespace Web.Player
       Application.Current.Host.Content.IsFullScreen = !Application.Current.Host.Content.IsFullScreen;
     }
 
-    void ContentFullScreenChanged(object sender, EventArgs e)
+    private void ContentFullScreenChanged(object sender, EventArgs e)
     {
       if (Application.Current.Host.Content.IsFullScreen)
       {
@@ -216,10 +213,9 @@ namespace Web.Player
         LayoutRoot.Width = _layoutWidth;
         LayoutRoot.Height = _layoytHeight;
       }
-
     }
 
-    void MediaElementMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    private void MediaElementMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
       if (e.ClickCount == 2)
       {
@@ -228,10 +224,9 @@ namespace Web.Player
       }
     }
 
-    void MediaElementMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+    private void MediaElementMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
       TimeLinePlayButtonPressed(this, new RoutedEventArgs());
-
     }
 
     #endregion
@@ -257,7 +252,7 @@ namespace Web.Player
       return null;
     }
 
-    void CurrentExit(object sender, EventArgs e)
+    private void CurrentExit(object sender, EventArgs e)
     {
       StoreActualPosition();
     }
@@ -268,9 +263,9 @@ namespace Web.Player
 
     private string TimespanToString(TimeSpan time)
     {
-      return string.Format("{0}:{1}:{2}", time.Hours.ToString("00"), time.Minutes.ToString("00"), time.Seconds.ToString("00"));
+      return string.Format("{0}:{1}:{2}", time.Hours.ToString("00"), time.Minutes.ToString("00"),
+                           time.Seconds.ToString("00"));
     }
-
 
     #endregion
   }

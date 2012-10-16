@@ -6,7 +6,7 @@
                 xmlns:View="clr-namespace:Web.Player.Core.View" mc:Ignorable="d"
     d:DesignHeight="405" d:DesignWidth="719">
 
-    <Grid x:Name="LayoutRoot" Background="Black" Height="405" Width="719">
+    <Grid x:Name="LayoutRoot" Background="Black" Height="405" Width="719" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />

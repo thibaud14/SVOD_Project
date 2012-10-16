@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Web.Player.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:View="clr-namespace:Web.Player.Core.View" mc:Ignorable="d"
+    d:DesignHeight="405" d:DesignWidth="719">
+
+    <Grid x:Name="LayoutRoot" Background="Black" Height="405" Width="719">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="300" Color="#877b77" Opacity="100" ShadowDepth="10" Direction="0"/>
+        </Grid.Effect>
+        
+        <Grid.Resources>
+            <Storyboard x:Name="TimeLineAnimationHide">
+                <DoubleAnimation Storyboard.TargetName="TimeLine" Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" Duration="0:0:1" />
+            </Storyboard>
+            <Storyboard x:Name="TimeLineAnimationShow">
+                <DoubleAnimation Storyboard.TargetName="TimeLine" Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1" />
+            </Storyboard>
+        </Grid.Resources>
+        <View:Player Grid.Row="0" Grid.RowSpan="2" x:Name="Player" />
+        <View:TimeLine Grid.Row="1" x:Name="TimeLine" />
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<LiveSmoothStreamingSettings>
+  <BufferingEngineSettings 
+    ForceAccurateSeeks="true"
+Max404ErrorsPerChunk = "2"
+  Max412ErrorsPerChunk = "8"
+     NumRetriesOnTimeout ="1"
+    MaxAllowableTimeForRebuffersAfterSeekMilliseconds = "2000"
+     MaxChunkDownloadRetries = "2"
+    MaxConsecutiveChunkDownloadErrorsPerStream = "50"
+    MaxConsecutiveChunkParseErrorsPerStream = "5"
+    MaxGetNextStreamSampleRetries = "3"
+    MaxPlaybackBufferSizeMilliseconds = "30000"
+    MaxPlaybackRebufferSizeMilliseconds ="15000"
+RebufferSizeAddendMilliseconds = "500"
+     RebufferSizeMultiplier = "1.25"
+ChunkDownloadTimeoutSeconds="8.0"
+    MaxConsecutiveChunkTimeoutsPerStream="10"
+    />
+  <HeuristicsEngineSettings
+ LiveStableBufferSizeMilliseconds = "5000"
+            LiveToOnDemandCrossoverTimeMilliseconds = "12000"
+            LiveUpgradeBufferSizeMilliseconds = "3000"
+            OnDemandStableBufferSizeMilliseconds = "6000"
+            OnDemandUpgradeBufferSizeMilliseconds = "3000"
+ SwitchingFrequencyChunksBeforeDowngrade = "0"
+ SwitchingFrequencyChunksBeforeUpgrade = "1"
+ TrackErrorHeuristicsWindowSize = "6"
+    />
+
+  <DownloadManagerSettings
+              MaxCacheEntryAgeSeconds = "300"
+              PruningIntervalMilliseconds = "5000"
+              ReadSize="32768"
+              ResponseCacheEnabled = "false"
+              ResponseCacheSizeBytes = "50000000"
+              NetworkingStackType="BrowserHttp"
+              ClipNetworkingStackType="BrowserHttp"
+    />
+  <PlaybackSettings
+            AudioBufferLength="250"
+            SeekClampTimeWindow="500"
+            SeekClampPositionRange="2000"
+            AutomatedDefibrillatorTimeoutMilliseconds="3000"
+  />
+  
+</LiveSmoothStreamingSettings>

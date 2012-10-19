@@ -1,1 +1,1 @@
-Happy coding with GIT !
+Happy coding with GIT after merge !

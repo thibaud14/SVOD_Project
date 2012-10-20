@@ -35,7 +35,7 @@
       <file leaf-file-name="custom.css.scss" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="179" column="58" selection-start="2448" selection-end="2448" vertical-scroll-proportion="0.38742858">
+            <state line="176" column="69" selection-start="2422" selection-end="2422" vertical-scroll-proportion="0.6502857">
               <folding />
             </state>
           </provider>
@@ -574,7 +574,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1036" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -738,7 +738,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/custom.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="58" selection-start="2448" selection-end="2448" vertical-scroll-proportion="0.38742858">
+        <state line="176" column="69" selection-start="2422" selection-end="2422" vertical-scroll-proportion="0.6502857">
           <folding />
         </state>
       </provider>

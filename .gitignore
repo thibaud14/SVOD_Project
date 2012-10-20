@@ -28,6 +28,11 @@ local.properties
 # PDT-specific
 .buildpath
 
+#################
+## Jetbrains IDE
+#################
+.idea
+*.iml
 
 #################
 ## Visual Studio

@@ -1,11 +1,5 @@
 WebVideo::Application.routes.draw do
 
-  get "users/new"
-
-  get "static_pages/home"
-  get "static_pages/help"
-  get "users/new"
-
   root :to => "static_pages#home"
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

@@ -20,7 +20,8 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user = cookies[:id]
+    #same as : @current_user = @current_user || User.find(cookies[:id])
+    @current_user ||= User.find(cookies[:id])
   end
 
 

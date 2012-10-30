@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010222256) do
+ActiveRecord::Schema.define(:version => 20121026224427) do
+
+  create_table "movie_people", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "firstname"
+    t.string   "name"
+    t.date     "birthdate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ref_professions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -19,6 +38,22 @@ ActiveRecord::Schema.define(:version => 20121010222256) do
     t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "thumbnail_url"
+    t.string   "type"
+    t.string   "title"
+    t.date     "year"
+    t.integer  "duration"
+    t.string   "country"
+    t.string   "video_url"
+    t.string   "bo_url"
+    t.string   "synopsis"
+    t.integer  "position"
+    t.string   "tagline"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end

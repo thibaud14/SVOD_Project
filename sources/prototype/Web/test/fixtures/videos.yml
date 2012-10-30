@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  thumbnail_url: MyString
+  type: 
+  title: MyString
+  year: 2012-10-27
+  duration: 1
+  country: MyString
+  video_url: MyString
+  bo_url: MyString
+  synopsis: MyString
+  position: 1
+  tagline: MyString
+
+two:
+  thumbnail_url: MyString
+  type: 
+  title: MyString
+  year: 2012-10-27
+  duration: 1
+  country: MyString
+  video_url: MyString
+  bo_url: MyString
+  synopsis: MyString
+  position: 1
+  tagline: MyString

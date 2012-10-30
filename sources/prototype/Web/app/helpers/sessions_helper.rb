@@ -21,7 +21,9 @@ module SessionsHelper
 
   def current_user
     #same as : @current_user = @current_user || User.find(cookies[:id])
-    @current_user ||= User.find(cookies[:id])
+    if !cookies[:id].nil?
+      @current_user ||= User.find(cookies[:id])
+    end
   end
 
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'mysql2' 
+gem 'mysql2'
 gem 'rake' # Not rake version 0.9.0 like you have 
 gem 'rails', '~> 3.2.0.rc2'
 gem 'bootstrap-sass', '2.0.4'

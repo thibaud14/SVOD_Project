@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class VideoLangueTest < ActiveSupport::TestCase
+class VideoGenreTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

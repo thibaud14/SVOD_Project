@@ -59,9 +59,16 @@ User.create([
 
 
 Video.create([
-  { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type => "Serie", :title => "Le Grillon des champs", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "Leonard Hofstadter et Sheldon Cooper vivent en colocation à Pasadena, une ville de l'agglomération de Los Angeles.
-Ce sont tous deux des physiciens surdoués, « geeks » de surcroît. C'est d'ailleurs autour de cela qu'est axée la majeure partie comique de la série. Ils partagent quasiment tout leur temps libre avec leurs deux amis Howard Wolowitz et Rajesh Koothrappali pour jouer à des jeux vidéo comme Halo, organiser un marathon des films Superman, jouer à des jeux de société ou de rôles comme le Boggle klingon, Donjons et Dragons, voire discuter de théories scientifiques très complexes. Leur univers routinier est perturbé lorsqu'une jolie jeune femme, Penny, s'installe dans l'appartement d’en face.
-Leonard a immédiatement des vues sur elle, et va tout faire pour la séduire et l'intégrer au groupe et à leur univers auquel elle ne connaît rien.", :position => 2, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 3.8,
-:created_at => nil, :updated_at => nil }
-], :without_protection => true )
+  { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type_video => "Serie", :title => " La fluctuation de l'ouvre-boîte électrique", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E02/bbts03E01.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "Sheldon rentre au Texas en disgrâce quand il apprend que ses camarades ont altéré les données de son expédition dans l'Arctique...", :position => 2, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 2.8,
+  :created_at => nil, :updated_at => nil }],
+  :without_protection => true )
 
+Video.create([
+  { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type_video => "Serie", :title => "Le Grillon des champs", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "La première nuit de Leonard et Penny ne se déroule pas réellement comme ils l'imaginaient. Sheldon et Howard sont en désaccord sur la nature d'un criquet et décident de parier les comics auxquels ils tiennent le plus.", :position => 2, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 3.8,
+    :created_at => nil, :updated_at => nil }],
+    :without_protection => true )
+
+Video.create([
+  { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type_video => "Serie", :title => "La déviation Gotowitz", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E02/bbts03E03.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "Sheldon tente de faire retrouver à Penny sa bonne humeur avec des chocolats afin qu'elle soit plus gentille envers lui. Raj et Howard décident de s'habiller façon «gothique» afin d'aller draguer dans un night club.", :position => 2, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 3.8,
+  :created_at => nil, :updated_at => nil }],
+  :without_protection => true )

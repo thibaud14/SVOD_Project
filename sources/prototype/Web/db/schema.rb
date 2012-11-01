@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031140145) do
+ActiveRecord::Schema.define(:version => 20121101180037) do
 
   create_table "collections", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,36 @@ ActiveRecord::Schema.define(:version => 20121031140145) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "ref_professions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ref_star_ratings", :force => true do |t|
+    t.float    "nbr_stars"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ref_video_genres", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ref_video_langues", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ref_video_subtitles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "reviews", :force => true do |t|
     t.string   "message"
     t.float    "star_rating"
@@ -62,9 +92,35 @@ ActiveRecord::Schema.define(:version => 20121031140145) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "video_langues", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "video_people", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "video_reviews", :force => true do |t|
+    t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "video_subtitles", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "video_watcheds", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "videos", :force => true do |t|
     t.string   "thumbnail_url"
-    t.string   "type"
+    t.string   "type_video"
     t.string   "title"
     t.date     "year"
     t.integer  "duration"

@@ -34,6 +34,14 @@
           throw new Error(errMsg);
       }
   </script>
+  <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  </script>
 </head>
 <body>
 
@@ -42,7 +50,7 @@
     <%= image_tag("BBT.png", alt: "Rails") %>
   </div>
   <div id="title">
-    <h3>Big Bang Theory</h3>
+    <h3>The Big Bang Theory</h3>
     <h4>Saison 3 Episode 2</h4>
   </div>
 
@@ -65,5 +73,13 @@
       </div>
   </div>
 </form>
+
+<div id="comments">
+    <div class="fb-like" data-href="http://localhost:3000/" data-send="true" data-show-faces="true"></div>
+    <div class="fb-comments" data-href="http://example.com" data-num-posts="2" data-width="470"></div>
+</div>
+
+
+
 </body>
 

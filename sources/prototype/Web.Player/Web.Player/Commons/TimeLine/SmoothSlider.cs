@@ -41,15 +41,27 @@ namespace Web.Player.Commons.TimeLine
         horizontalThumb.DragStarted += HorizontalThumbDragStarted;
         horizontalThumb.DragCompleted += HorizontalThumbDragCompleted;
         horizontalThumb.DragDelta += HorizontalThumbDragDelta;
+        horizontalThumb.GotFocus += HorizontalThumbGotFocus;
+        horizontalThumb.LostFocus += HorizontalThumbLostFocus;
       }
 
       RepeatButton rb;
-      rb = base.GetTemplateChild("HorizontalTrackLargeChangeIncreaseRepeatButton") as RepeatButton;
+      rb = GetTemplateChild("HorizontalTrackLargeChangeIncreaseRepeatButton") as RepeatButton;
       rb.MouseMove += TrackBarMouseMove;
       rb.Click += TrackBarClick;
-      rb = base.GetTemplateChild("HorizontalTrackLargeChangeDecreaseRepeatButton") as RepeatButton;
+      rb = GetTemplateChild("HorizontalTrackLargeChangeDecreaseRepeatButton") as RepeatButton;
       rb.MouseMove += TrackBarMouseMove;
       rb.Click += TrackBarClick;
+    }
+
+    void HorizontalThumbLostFocus(object sender, RoutedEventArgs e)
+    {
+      Cursor = Cursors.Arrow;
+    }
+
+    void HorizontalThumbGotFocus(object sender, RoutedEventArgs e)
+    {
+      Cursor = Cursors.Hand;
     }
 
     #endregion

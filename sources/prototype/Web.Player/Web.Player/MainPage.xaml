@@ -9,7 +9,7 @@
     <Grid x:Name="LayoutRoot" Background="Black" Height="405" Width="719" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
         <Grid.Effect>

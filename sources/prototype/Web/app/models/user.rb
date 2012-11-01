@@ -2,10 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
 
-  has_many :video_review
-  has_many :video, :through => :video_review
-  has_many :video_watched
-  has_many :video, :through => :video_watched
+  has_and_belongs_to_many :video
 
   before_save { |user| user.email = email.downcase }
 

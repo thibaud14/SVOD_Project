@@ -1,5 +1,5 @@
 class Collection < ActiveRecord::Base
-  attr_accessible :nom, :year
+  attr_accessible :name, :year
 
   has_many :video
 

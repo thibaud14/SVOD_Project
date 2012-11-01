@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
 <body>
+<!--Render header-->
 <%= render 'layouts/header' %>
-<div class="container">
-
-
+<!--Body-->
+<div class="container-fluid">
+  <!--print alert-->
   <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
-  <% if signed_in? %>
-      <%=  render 'layouts/content' %>
-  <% else %>
-      <%= yield %>
-  <% end %>
+
+  <!--Get page content-->
+  <%= yield %>
+
+  <!--render footer-->
   <%= render 'layouts/footer' %>
+
+  <!--Debug console in dev mode-->
   <%= debug(params) if Rails.env.development? %>
 </div>
 

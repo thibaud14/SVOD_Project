@@ -1,0 +1,11 @@
+<!--<a href="#"><i class="icon-film"></i><%= video.position  %>. <%= video.title %></a>-->
+<div class="media">
+  <a class="pull-left" href="#">
+    <img class="media-object" src="<%= video.thumbnail_url %>" alt="movie">
+  </a>
+
+  <div class="media-body">
+    <h4 class="media-heading"><%= video.title %></h4>
+    <%= video.collection.name rescue nil %>
+  </div>
+</div>

@@ -1,13 +1,19 @@
 WebVideo::Application.routes.draw do
 
-  root :to => "static_pages#home"
+  root :to => 'static_pages#home'
+
+  #static pages
+  match '/home', to: 'static_pages#home'
+  match '/content', to: 'static_pages#content'
+  match '/about', to: 'static_pages#about'
+  match '/help', to: 'static_pages#help'
+  #user
   match '/signup', to: 'users#new'
+  #session
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  match '/home', to: "static_pages#home"
-  match '/content', to: "static_pages#content"
-  match '/about', to: "static_pages#about"
-  match '/help', to: "static_pages#help"
+  #search
+  match '/find', to: 'search#find'
 
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]

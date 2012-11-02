@@ -6,18 +6,18 @@ class Video < ActiveRecord::Base
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :subtitles
   has_and_belongs_to_many :langues
-  belongs_to :collection
+  belongs_to :collection, :class_name => "Collection"
   has_many :reviews
 
   def self.recent(top)
     if top
-      all :order => "created_at ASC", :limit => top
+      find :all, :include => :collection, :order => "created_at ASC", :limit => top
     end
   end
 
   def self.rated(top)
     if top
-      all :order => "star_rating_avg ASC", :limit => top
+      find :all, :include => :collection, :order => "star_rating_avg ASC", :limit => top
     end
   end
 end

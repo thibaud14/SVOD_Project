@@ -169,6 +169,20 @@ input, textarea, select, .uneditable-input {
   @extend .error;
 }
 
+//Right menu
+.right-bar {
+  margin-left: 5px;
+}
+//Left menu
+.left-bar {
+  margin-right: 5px;
+}
+//Content
+.content {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 /* silverlight */
 
 #silverlightHost {

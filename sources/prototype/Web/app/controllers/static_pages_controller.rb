@@ -9,13 +9,14 @@ class StaticPagesController < ApplicationController
     if !signed_in?
       redirect_to :action => 'home'
     end
-    @videos = Video.find_all_by_type_video(params='Serie')
+    @videosSuggestion = Video.find_all_by_type_video(params='Serie')
+    @videosRated = Video.rated(5)
+    @videosRecent = Video.recent(5)
   end
 
   def help
   end
 
   def about
-
   end
 end

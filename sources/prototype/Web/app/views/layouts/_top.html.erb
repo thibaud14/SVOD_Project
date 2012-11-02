@@ -1,0 +1,16 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Recent</li>
+  <% @videosRecent.each do |video| %>
+      <li>
+        <a href="#"><i class="icon-film"></i><%= video.position  %>. <%= video.title %></a>
+      </li>
+  <% end %>
+</ul>
+<ul class="nav nav-list">
+  <li class="nav-header">Top Rated</li>
+  <% @videosRated.each do |video| %>
+      <li>
+      <a href="#"><i class="icon-film"></i><%= video.position  %>. <%= video.title %></a>
+      </li>
+  <% end %>
+</ul>

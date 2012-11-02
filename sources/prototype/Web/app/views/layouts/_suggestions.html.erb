@@ -13,7 +13,7 @@
     </div>
     </li>
     <br>
-    <% @videos.each do |v| %>
+    <% @videosSuggestion.each do |v| %>
         <% if v.position == 1 %>
             <li class="active"><a href="#"><i class="icon-film"></i><%= v.position  %>. <%= v.title %></a></li>
         <% else %>

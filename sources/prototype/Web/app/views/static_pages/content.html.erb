@@ -1,17 +1,19 @@
 <div class="row">
   <!--left menu-->
   <div class="span2">
-    <h2>Left Menu</h2>
+    <%= render 'layouts/top' %>
   </div>
   <!--body-->
   <div class="span8">
-    <!--player and title-->
-    <div class="row">
+    <div class="content">
+      <!--player and title-->
+      <div class="row">
         <%= render 'layouts/player' %>
-    </div>
-    <!--comments-->
-    <div class="row">
+      </div>
+      <!--comments-->
+      <div class="row">
         <%= render 'layouts/comments' %>
+      </div>
     </div>
   </div>
   <!--right menu-->

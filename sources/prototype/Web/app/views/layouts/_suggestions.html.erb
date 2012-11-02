@@ -2,25 +2,32 @@
   <ul class="nav nav-list">
     <li class="nav-header">The Big Bang Theory
     <div class="btn-group">
-      <a class="btn dropdown-toggle btn-mini" data-toggle="dropdown" href="#">
-        Saison 1
+      <a class="btn btn-primary dropdown-toggle btn-mini" data-toggle="dropdown" href="#">
+        Saison 3
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><%= link_to "Saison 2", "#" %></li>
-        <li><%= link_to "Saison 3", "#" %></li>
+        <li><%= link_to "Saison 1", "update_video_collection" %></li>
+        <li><%= link_to "Saison 2", "update_video_collection" %></li>
       </ul>
     </div>
     </li>
     <br>
-    <% @videosSuggestion.each do |v| %>
+    <% @videosCollection.each do |v| %>
         <% if v.position == 1 %>
             <li class="active"><a href="#"><i class="icon-film"></i><%= v.position  %>. <%= v.title %></a></li>
         <% else %>
             <li><a href="#"><i class="icon-film"></i><%= v.position  %>. <%= v.title %></a></li>
         <% end %>
   <% end %>
+
+  <li class="divider"></li>
+  <li class="nav-header">Suggestions</li>
+    <% @videosSuggestion.each do |v| %>
+        <li><a href="#"><i class="icon-film"></i> <%= v.title %></a></li>
+    <% end %>
   </ul>
+
 
 
 </div>

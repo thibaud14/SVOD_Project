@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101180037) do
+ActiveRecord::Schema.define(:version => 20121102230326) do
 
   create_table "collections", :force => true do |t|
     t.string   "name"
@@ -26,54 +26,27 @@ ActiveRecord::Schema.define(:version => 20121101180037) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "genres_videos", :force => true do |t|
+    t.integer "video_id"
+    t.integer "genre_id"
+  end
+
   create_table "langues", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "people", :force => true do |t|
-    t.string   "firstname"
-    t.string   "name"
-    t.date     "birthdate"
-    t.string   "role"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ref_professions", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ref_star_ratings", :force => true do |t|
-    t.float    "nbr_stars"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ref_video_genres", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ref_video_langues", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ref_video_subtitles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "langues_videos", :force => true do |t|
+    t.integer "video_id"
+    t.integer "langue_id"
   end
 
   create_table "reviews", :force => true do |t|
     t.string   "message"
     t.float    "star_rating"
+    t.integer  "user_id"
+    t.integer  "video_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -84,6 +57,11 @@ ActiveRecord::Schema.define(:version => 20121101180037) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "subtitles_videos", :force => true do |t|
+    t.integer "video_id"
+    t.integer "subtitle_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -92,30 +70,9 @@ ActiveRecord::Schema.define(:version => 20121101180037) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "video_langues", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "video_people", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "video_reviews", :force => true do |t|
-    t.string   "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "video_subtitles", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "video_watcheds", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "users_videos", :force => true do |t|
+    t.integer "video_id"
+    t.integer "user_id"
   end
 
   create_table "videos", :force => true do |t|
@@ -132,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20121101180037) do
     t.string   "tagline"
     t.float    "star_rating_avg"
     t.integer  "season"
+    t.integer  "collection_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

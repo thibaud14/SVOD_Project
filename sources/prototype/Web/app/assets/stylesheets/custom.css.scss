@@ -200,7 +200,8 @@ input, textarea, select, .uneditable-input {
 /* video title */
 
 #videoTitle {
-  height: inherit;
+  #height: inherit;
+  height: 85px;
   border-bottom: 1px solid $grayMediumLight;
 
   #thumbnails {
@@ -221,6 +222,8 @@ input, textarea, select, .uneditable-input {
 
 #suggestions {
   width: inherit;
+  background: #eaeaea;
+
 }
 
 
@@ -230,3 +233,4 @@ input, textarea, select, .uneditable-input {
   margin-top: 20px;
   width: inherit;
 }
+

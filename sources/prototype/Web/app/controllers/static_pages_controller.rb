@@ -10,8 +10,13 @@ class StaticPagesController < ApplicationController
       redirect_to :action => 'home'
     end
     @videosSuggestion = Video.find_all_by_type_video(params='Serie')
+    @videosCollection = Video.find_all_by_type_video(params='Serie')
     @videosRated = Video.rated(5)
     @videosRecent = Video.recent(5)
+  end
+
+  def update_video_collection
+    @videosCollection = Video.find_all_by_type_video(params='Film')
   end
 
   def help

@@ -173,20 +173,20 @@ input, textarea, select, .uneditable-input {
 
 #silverlightHost {
   margin-top: 20px;
-  width : 619px;
-  margin-left: auto ;
-  margin-right: auto ;
+  width : inherit;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #silverlightControlHost {
-  height: 305px;
-  width: 619px;
+  height: 450px;
+  width: inherit;
 }
 
 /* video title */
 
 #videoTitle {
-  height: 100px;
+  height: inherit;
   border-bottom: 1px solid $grayMediumLight;
 
   #thumbnails {
@@ -206,14 +206,13 @@ input, textarea, select, .uneditable-input {
 /* suggestion view */
 
 #suggestions {
-  width: 300px;
+  width: inherit;
 }
 
 
 /* Facebook comments */
 
 #comments {
-  margin-left: auto ;
-  margin-right: auto ;
-  width: 719px;
+  margin-top: 20px;
+  width: inherit;
 }

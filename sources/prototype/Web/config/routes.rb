@@ -15,6 +15,9 @@ WebVideo::Application.routes.draw do
   #search
   match '/find', to: 'search#find'
 
+  #suggestion view
+  match '/update_video_collection', to: 'static_pages#update_video_collection'
+
   resources :users, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
 

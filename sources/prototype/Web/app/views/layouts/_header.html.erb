@@ -4,7 +4,7 @@
       <%= link_to "sample app", root_path, id: "logo" %>
 
       <% if signed_in? %>
-          <%= form_tag({:controller => "search", :action => "find", :method => "get"}, {:class => "navbar-search pull-left"}) do %>
+          <%= form_tag({:controller => "static_pages", :action => "find", :method => "get"}, {:class => "navbar-search pull-left"}) do %>
               <%= text_field_tag :search, params[:search], :class => "search-query", :Placeholder => "Quick Search" %>
           <% end %>
       <% end %>

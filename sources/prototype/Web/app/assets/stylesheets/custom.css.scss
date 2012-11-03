@@ -220,10 +220,28 @@ input, textarea, select, .uneditable-input {
 
 /* suggestion view */
 
-#suggestions {
+.menu-container {
   width: inherit;
   background: #eaeaea;
+}
 
+//Media object
+.menu-container .media {
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  .media-object {
+    width: 32px;
+    height: 32px;
+  }
+  .media-body {
+    font-size: 11px;
+    .media-heading {
+      font-size: 12px;
+      .icon-film {
+        margin-bottom: 2px;
+      }
+    }
+  }
 }
 
 

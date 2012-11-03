@@ -14,7 +14,7 @@ WebVideo::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   #search
-  match '/find', to: 'search#find'
+  match '/find', to: 'static_pages#find'
 
   #suggestion view
   match '/update_video_collection', to: 'static_pages#update_video_collection'

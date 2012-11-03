@@ -223,9 +223,11 @@ input, textarea, select, .uneditable-input {
 .menu-container {
   width: inherit;
   background: #eaeaea;
+  margin-top: 100px;
 }
 
-//Media object
+/* Media object */
+
 .menu-container .media {
   margin-top: 2.5px;
   margin-bottom: 2.5px;
@@ -245,10 +247,12 @@ input, textarea, select, .uneditable-input {
 }
 
 
+
 /* Facebook comments */
 
 #comments {
   margin-top: 20px;
   width: inherit;
+  text-align: center;
 }
 

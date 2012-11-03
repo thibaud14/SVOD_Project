@@ -30,9 +30,9 @@ namespace Web.Player
     public MainPage()
     {
       InitializeComponent();
-      //Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/bbt/3/bbts03E01/bbts03E01.ism/manifest");
+      Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/bbt/3/bbts03E01/bbts03E01.ism/manifest");
       //Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest");
-      Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/Gladiator/gladiator.ism/manifest");
+      //Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/Gladiator/gladiator.ism/manifest");
       Player.MediaElement.AutoPlay = true;
       Player.MediaElement.MediaOpened += MediaElementMediaOpened;
       Player.MediaElement.MediaEnded += MediaElementMediaEnded;

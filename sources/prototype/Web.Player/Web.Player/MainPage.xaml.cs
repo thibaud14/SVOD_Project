@@ -30,10 +30,9 @@ namespace Web.Player
     public MainPage()
     {
       InitializeComponent();
-      Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/bbt/3/bbts03E01/bbts03E01.ism/manifest");
-      //Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest");
+      //Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/bbt/3/bbts03E01/bbts03E01.ism/manifest");
       //Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/bbt/3/bbts03E02/bbts03E02.ism/manifest");
-      //Player.MediaElement.SmoothStreamingSource = new Uri("http://localhost/videos/Gladiator/gladiator.ism/manifest");
+      Player.MediaElement.SmoothStreamingSource = new Uri("http://vps.vincex86.be/videos/Gladiator/gladiator.ism/manifest");
       Player.MediaElement.AutoPlay = true;
       Player.MediaElement.MediaOpened += MediaElementMediaOpened;
       Player.MediaElement.MediaEnded += MediaElementMediaEnded;
@@ -41,6 +40,8 @@ namespace Web.Player
       Player.MediaElement.MouseLeftButtonDown += MediaElementMouseLeftButtonDown;
       Player.MediaElement.MouseLeftButtonUp += MediaElementMouseLeftButtonUp;
       Player.MediaElement.CurrentStateChanged += MediaElementCurrentStateChanged;
+      Player.MediaElement.HDActivated += MediaElementHDActivated;      
+      
       Player.MediaElement.ConfigPath = "config.xml";
 
       MouseMove += MainPageMouseMove;
@@ -132,6 +133,15 @@ namespace Web.Player
           TimeLine.PlayButton2.IsChecked = false;
           break;
       }
+    }
+
+    void MediaElementHDActivated(object sender, HDEventArgs e)
+    {
+      if (e.IsHD)
+        TimeLine.HDEnabled.Text = "HD";
+      else
+        TimeLine.HDEnabled.Text = "SD";
+        
     }
 
     #endregion

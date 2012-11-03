@@ -81,6 +81,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Commons\Events\HDEventArgs.cs" />
     <Compile Include="Commons\Events\PositionEventArgs.cs" />
     <Compile Include="Commons\MediaElement\SmoothMediaElement.cs" />
     <Compile Include="Commons\Models\ClipVideo.cs" />

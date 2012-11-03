@@ -9,6 +9,7 @@ namespace Web.Player.Commons.MediaElement
   {
     private readonly DispatcherTimer _videoTick;
     public event EventHandler<PositionEventArgs> PositionChanged;
+    public event EventHandler<HDEventArgs> HDActivated;
 
     public new TimeSpan Position
     {
@@ -24,6 +25,17 @@ namespace Web.Player.Commons.MediaElement
 
       MediaOpened += SmoothMediaElementMediaOpened;
       MediaEnded += SmoothMediaElementMediaEnded;
+      PlaybackTrackChanged += SmoothMediaElementPlaybackTrackChanged;
+    }
+
+    void SmoothMediaElementPlaybackTrackChanged(object sender, TrackChangedEventArgs e)
+    {
+      var width = e.NewTrack.Attributes["MaxWidth"];
+      if(Int64.Parse(width) >= 1280)
+        OnHDActivated(new HDEventArgs(true));
+      else
+        OnHDActivated(new HDEventArgs(false));
+
     }
 
     void SmoothMediaElementMediaEnded(object sender, System.Windows.RoutedEventArgs e)
@@ -47,5 +59,10 @@ namespace Web.Player.Commons.MediaElement
       if (handler != null) handler(this, positionEventArgs);
     }
 
+    public void OnHDActivated(HDEventArgs hdEventArgs)
+    {
+      EventHandler<HDEventArgs> handler = HDActivated;
+      if (handler != null) handler(this, hdEventArgs);
+    }
   }
 }

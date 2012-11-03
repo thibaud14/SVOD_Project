@@ -53,6 +53,21 @@ namespace Web.Player.Core.View
 
     #endregion
 
+    private void UserControl_Loaded(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void Volume_MouseEnter(object sender, MouseEventArgs e)
+    {
+      VolumeSlider.Visibility = Visibility.Visible;
+    }
+
+    private void Volume_MouseLeave(object sender, MouseEventArgs e)
+    {
+      VolumeSlider.Visibility = Visibility.Collapsed;
+    }
+
 
 
   }

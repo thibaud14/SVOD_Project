@@ -1,7 +1,8 @@
 ﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:TimeLine="clr-namespace:Web.Player.Commons.TimeLine" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Web.Player.Core.View.TimeLine" mc:Ignorable="d" d:DesignHeight="30" d:DesignWidth="643">
+             xmlns:TimeLine="clr-namespace:Web.Player.Commons.TimeLine" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Web.Player.Core.View.TimeLine"
+             mc:Ignorable="d" d:DesignHeight="35" d:DesignWidth="643" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style x:Key="ThumbStyle" TargetType="Thumb">
             <Setter Property="Background" Value="#FF1F3B53" />
@@ -41,8 +42,8 @@
                                     <VisualState x:Name="Unfocused" />
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                        	<Ellipse Fill="#FFDADADA"/>
-                        	<Ellipse x:Name="ellipse" Fill="#FF292929" Margin="4"/>
+                        	<Ellipse Fill="#FFDADADA" Margin="2"/>
+                        	<Ellipse x:Name="ellipse" Fill="#FF292929" Margin="5"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -121,19 +122,12 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Rectangle x:Name="TrackRectangle" Grid.ColumnSpan="3" Grid.Column="0" Height="8"
+                                <Rectangle x:Name="TrackRectangle" Grid.ColumnSpan="3" Grid.Column="0" Height="5"
                                            Margin="5,0,5,0" RadiusY="1" RadiusX="1" StrokeThickness="{TemplateBinding BorderThickness}"
-                                           Fill="#FFCECECE" />
-                                <Rectangle x:Name="TrackRectangleProgress" Width="auto" Height="8"
+                                           Fill="#FF626262" />
+                                <Rectangle x:Name="TrackRectangleProgress" Width="auto" Height="5"
                                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RadiusX="1" RadiusY="1"
-                                           StrokeThickness="{TemplateBinding BorderThickness}" Margin="5,7,-3,7"  d:LayoutOverrides="HorizontalAlignment, GridBox">
-                                	<Rectangle.Fill>
-                                		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                			<GradientStop Color="#FFC80000" Offset="0.362"/>
-                                			<GradientStop Color="#FF020000" Offset="1"/>
-                                		</LinearGradientBrush>
-                                	</Rectangle.Fill>
-                                </Rectangle>
+                                           StrokeThickness="{TemplateBinding BorderThickness}" Margin="5,7,-3,7"  d:LayoutOverrides="HorizontalAlignment, GridBox" Fill="White"/>
                                 <Rectangle x:Name="HorizontalTrackRectangleDisabledOverlay" Grid.ColumnSpan="3"
                                            Grid.Column="0" Fill="White" Height="3" Margin="5,0,5,0" Opacity=".55" RadiusY="1" RadiusX="1" Visibility="Collapsed" />
                                 <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0"
@@ -170,38 +164,241 @@
             </Setter>
         </Style>
 
-        <ControlTemplate x:Key="FusllScreenButtonTemplate" TargetType="Button">
+        <ControlTemplate x:Key="FusllScreenButtonTemplate" TargetType="ToggleButton">
             <Grid>
-                <Path
-                    Data="M0.5,0.5 L2.056,0.5 L0.50486249,0.5 L0.5,1.812 z M0.621521,19.4965 L0.621521,17.9405 L0.621521,19.491638 L1.934521,19.4965 z M25.372009,0.50399971 L25.372009,2.0589998 L25.372009,0.5088591 L24.05901,0.50399971 z M25.367981,19.5 L23.811981,19.5 L25.363119,19.5 L25.367981,18.188 z"
-                    Fill="#FFF4F4F5" Margin="3.938,2.941,4.065,3.003" Stretch="Fill" Stroke="White" UseLayoutRounding="False"
-                    StrokeThickness="1.3" />
-            </Grid>
+        		<VisualStateManager.VisualStateGroups>
+        			<VisualStateGroup x:Name="CheckStates">
+        				<VisualState x:Name="Checked">
+        					<Storyboard>
+        						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid1">
+        							<DiscreteObjectKeyFrame KeyTime="0">
+        								<DiscreteObjectKeyFrame.Value>
+        									<Visibility>Collapsed</Visibility>
+        								</DiscreteObjectKeyFrame.Value>
+        							</DiscreteObjectKeyFrame>
+        						</ObjectAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</VisualState>
+        				<VisualState x:Name="Unchecked">
+        					<Storyboard>
+        						<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+        							<DiscreteObjectKeyFrame KeyTime="0">
+        								<DiscreteObjectKeyFrame.Value>
+        									<Visibility>Collapsed</Visibility>
+        								</DiscreteObjectKeyFrame.Value>
+        							</DiscreteObjectKeyFrame>
+        						</ObjectAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</VisualState>
+        				<VisualState x:Name="Indeterminate"/>
+        			</VisualStateGroup>
+        		</VisualStateManager.VisualStateGroups>
+        		<Grid x:Name="grid1" Margin="10,5">
+        			<ed:BlockArrow Fill="#FFF4F4F5" Height="6.316" Margin="0,0,0.457,0" Orientation="Up" Stroke="White" StrokeThickness="1.3" UseLayoutRounding="False" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        				<ed:BlockArrow.RenderTransform>
+        					<CompositeTransform Rotation="-45" TranslateX="-3.05" TranslateY="1.263"/>
+        				</ed:BlockArrow.RenderTransform>
+        			</ed:BlockArrow>
+        			<ed:BlockArrow Fill="#FFF4F4F5" Margin="0,0,0.457,0.059" Orientation="Up" Stroke="White" StrokeThickness="1.3" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Height="6.316" VerticalAlignment="Bottom">
+        				<ed:BlockArrow.RenderTransform>
+        					<CompositeTransform Rotation="135" TranslateX="3.05" TranslateY="-1.263"/>
+        				</ed:BlockArrow.RenderTransform>
+        			</ed:BlockArrow>
+        		</Grid>
+        		<Grid x:Name="grid" Margin="10,5">
+        			<ed:BlockArrow Fill="#FFF4F4F5" Height="6.316" Margin="0,0,0.457,0" Orientation="Up" Stroke="White" StrokeThickness="1.3" UseLayoutRounding="False" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        				<ed:BlockArrow.RenderTransform>
+        					<CompositeTransform Rotation="135" TranslateX="-3.05" TranslateY="1.263"/>
+        				</ed:BlockArrow.RenderTransform>
+        			</ed:BlockArrow>
+        			<ed:BlockArrow Fill="#FFF4F4F5" Margin="0,0,0.457,0.059" Orientation="Up" Stroke="White" StrokeThickness="1.3" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Height="6.316" VerticalAlignment="Bottom">
+        				<ed:BlockArrow.RenderTransform>
+        					<CompositeTransform Rotation="-45" TranslateX="3.05" TranslateY="-1.263"/>
+        				</ed:BlockArrow.RenderTransform>
+        			</ed:BlockArrow>
+        		</Grid>
+        	</Grid>
         </ControlTemplate>
-    	<ControlTemplate x:Key="PLayButton" TargetType="Button">
+    	<ControlTemplate x:Key="PlayButton" TargetType="ToggleButton">
     		<Grid>
-    			<ed:RegularPolygon HorizontalAlignment="Left" InnerRadius="1" Margin="2.57,5.741,0,5.926" PointCount="3" Stretch="Fill" UseLayoutRounding="False" Width="16.999" RenderTransformOrigin="0.5,0.5" Fill="White">
+    			<VisualStateManager.VisualStateGroups>
+    				<VisualStateGroup x:Name="CheckStates">
+    					<VisualState x:Name="Checked">
+    						<Storyboard>
+    							<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="regularPolygon">
+    								<DiscreteObjectKeyFrame KeyTime="0">
+    									<DiscreteObjectKeyFrame.Value>
+    										<Visibility>Collapsed</Visibility>
+    									</DiscreteObjectKeyFrame.Value>
+    								</DiscreteObjectKeyFrame>
+    							</ObjectAnimationUsingKeyFrames>
+    						</Storyboard>
+    					</VisualState>
+    					<VisualState x:Name="Unchecked">
+    						<Storyboard>
+    							<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid">
+    								<DiscreteObjectKeyFrame KeyTime="0">
+    									<DiscreteObjectKeyFrame.Value>
+    										<Visibility>Collapsed</Visibility>
+    									</DiscreteObjectKeyFrame.Value>
+    								</DiscreteObjectKeyFrame>
+    							</ObjectAnimationUsingKeyFrames>
+    						</Storyboard>
+    					</VisualState>
+    					<VisualState x:Name="Indeterminate"/>
+    				</VisualStateGroup>
+    			</VisualStateManager.VisualStateGroups>
+    			<ed:RegularPolygon x:Name="regularPolygon" HorizontalAlignment="Left" Margin="3.566,7.057,0,7.174" PointCount="3" Stretch="Fill" UseLayoutRounding="False" Width="13.75" RenderTransformOrigin="0.5,0.5" Fill="White" StrokeLineJoin="Round" Stroke="White">
     				<ed:RegularPolygon.RenderTransform>
     					<CompositeTransform Rotation="90"/>
     				</ed:RegularPolygon.RenderTransform>
     			</ed:RegularPolygon>
+    			<Grid x:Name="grid" Margin="5,6,6,6">
+    				<Rectangle Fill="White" HorizontalAlignment="Left" Width="3" RadiusY="0.3" RadiusX="0.3"/>
+    				<Rectangle Fill="White" HorizontalAlignment="Right" Width="3" RadiusX="0.3" RadiusY="0.3"/>
+    			</Grid>
     		</Grid>
     	</ControlTemplate>
+    	<ControlTemplate x:Key="VolumeButton" TargetType="Button">
+    		<Grid>
+    			<Grid Margin="3,4,5,3">
+    				<Rectangle Fill="White" Margin="1,6,0,9" HorizontalAlignment="Left" Width="6"/>
+    				<ed:RegularPolygon Fill="White" InnerRadius="1" Margin="0,4.434,6.506,7.127" PointCount="3" Stretch="Fill" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+    					<ed:RegularPolygon.RenderTransform>
+    						<CompositeTransform Rotation="270"/>
+    					</ed:RegularPolygon.RenderTransform>
+    				</ed:RegularPolygon>
+    				<Rectangle Fill="White" Margin="8,6,8,9" RenderTransformOrigin="0.5,0.5">
+    					<Rectangle.RenderTransform>
+    						<CompositeTransform ScaleX="-1"/>
+    					</Rectangle.RenderTransform>
+    				</Rectangle>
+    				<ed:Arc ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="90" Fill="White" Margin="3.048,3.753,5.41,6.142" Stretch="None" Stroke="White" StartAngle="0" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+    					<ed:Arc.RenderTransform>
+    						<CompositeTransform Rotation="45"/>
+    					</ed:Arc.RenderTransform>
+    				</ed:Arc>
+    				<ed:Arc ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="90" Fill="#FF565656" Margin="2.405,2.064,2.738,4.297" Stretch="None" Stroke="White" StartAngle="0" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+    					<ed:Arc.RenderTransform>
+    						<CompositeTransform Rotation="45"/>
+    					</ed:Arc.RenderTransform>
+    				</ed:Arc>
+    				<ed:Arc ArcThickness="0" ArcThicknessUnit="Pixel" EndAngle="90" Fill="#FF565656" Margin="1.383,0,-0.343,1.983" Stretch="None" Stroke="White" StartAngle="0" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5">
+    					<ed:Arc.RenderTransform>
+    						<CompositeTransform Rotation="45"/>
+    					</ed:Arc.RenderTransform>
+    				</ed:Arc>
+    			</Grid>
+    		</Grid>
+    	</ControlTemplate>
+    	<Style x:Key="VolumeSlider" TargetType="TimeLine:SmoothSlider">
+    		<Setter Property="BorderThickness" Value="1"/>
+    		<Setter Property="Maximum" Value="10"/>
+    		<Setter Property="Minimum" Value="0"/>
+    		<Setter Property="Value" Value="0"/>
+    		<Setter Property="BorderBrush">
+    			<Setter.Value>
+    				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    					<GradientStop Color="#FFA3AEB9" Offset="0"/>
+    					<GradientStop Color="#FF8399A9" Offset="0.375"/>
+    					<GradientStop Color="#FF718597" Offset="0.375"/>
+    					<GradientStop Color="#FF617584" Offset="1"/>
+    				</LinearGradientBrush>
+    			</Setter.Value>
+    		</Setter>
+    		<Setter Property="IsTabStop" Value="False"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="TimeLine:SmoothSlider">
+    					<Grid x:Name="Root">
+    						<Grid.Resources>
+    							<ControlTemplate x:Key="RepeatButtonTemplate">
+    								<Grid x:Name="Root" Background="Transparent" Opacity="0"/>
+    							</ControlTemplate>
+    						</Grid.Resources>
+    						<VisualStateManager.VisualStateGroups>
+    							<VisualStateGroup x:Name="CommonStates">
+    								<VisualState x:Name="Normal"/>
+    								<VisualState x:Name="MouseOver"/>
+    								<VisualState x:Name="Disabled">
+    									<Storyboard>
+    										<ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="HorizontalTrackRectangleDisabledOverlay">
+    											<DiscreteObjectKeyFrame KeyTime="0">
+    												<DiscreteObjectKeyFrame.Value>
+    													<Visibility>Visible</Visibility>
+    												</DiscreteObjectKeyFrame.Value>
+    											</DiscreteObjectKeyFrame>
+    										</ObjectAnimationUsingKeyFrames>
+    										<ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="HorizontalThumbDisabledOverlay">
+    											<DiscreteObjectKeyFrame KeyTime="0">
+    												<DiscreteObjectKeyFrame.Value>
+    													<Visibility>Visible</Visibility>
+    												</DiscreteObjectKeyFrame.Value>
+    											</DiscreteObjectKeyFrame>
+    										</ObjectAnimationUsingKeyFrames>
+    										<ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="VerticalTrackRectangleDisabledOverlay">
+    											<DiscreteObjectKeyFrame KeyTime="0">
+    												<DiscreteObjectKeyFrame.Value>
+    													<Visibility>Visible</Visibility>
+    												</DiscreteObjectKeyFrame.Value>
+    											</DiscreteObjectKeyFrame>
+    										</ObjectAnimationUsingKeyFrames>
+    										<ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="VerticalThumbDisabledOverlay">
+    											<DiscreteObjectKeyFrame KeyTime="0">
+    												<DiscreteObjectKeyFrame.Value>
+    													<Visibility>Visible</Visibility>
+    												</DiscreteObjectKeyFrame.Value>
+    											</DiscreteObjectKeyFrame>
+    										</ObjectAnimationUsingKeyFrames>
+    									</Storyboard>
+    								</VisualState>
+    							</VisualStateGroup>
+    						</VisualStateManager.VisualStateGroups>
+    						<Grid x:Name="HorizontalTemplate" Background="{TemplateBinding Background}">
+    							<Grid.ColumnDefinitions>
+    								<ColumnDefinition Width="Auto"/>
+    								<ColumnDefinition Width="Auto"/>
+    								<ColumnDefinition Width="*"/>
+    							</Grid.ColumnDefinitions>
+    							<Rectangle x:Name="TrackRectangle" Grid.ColumnSpan="3" Grid.Column="0" Fill="#FFE6EFF7" Height="3" Margin="5,0,5,0" RadiusY="1" RadiusX="1" Stroke="#FFA3AEB9" StrokeThickness="{TemplateBinding BorderThickness}"/>
+    							<Rectangle x:Name="HorizontalTrackRectangleDisabledOverlay" Grid.ColumnSpan="3" Grid.Column="0" Fill="White" Height="3" Margin="5,0,5,0" Opacity=".55" RadiusY="1" RadiusX="1" Visibility="Collapsed"/>
+    							<RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0" Height="18" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}"/>
+    							<Thumb x:Name="HorizontalThumb" Grid.Column="1" Height="18" IsTabStop="True" Width="11"/>
+    							<Rectangle x:Name="HorizontalThumbDisabledOverlay" Grid.Column="1" Fill="White" Height="18" Opacity=".55" RadiusY="2" RadiusX="2" Visibility="Collapsed" Width="11"/>
+    							<RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" Grid.Column="2" Height="18" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}"/>
+    						</Grid>
+    						<Grid x:Name="VerticalTemplate" Background="{TemplateBinding Background}" Visibility="Collapsed">
+    							<Grid.RowDefinitions>
+    								<RowDefinition Height="*"/>
+    								<RowDefinition Height="Auto"/>
+    								<RowDefinition Height="Auto"/>
+    							</Grid.RowDefinitions>
+    							<Rectangle Fill="#FFE6EFF7" Margin="0,5,0,5" RadiusY="1" Grid.Row="0" RadiusX="1" Grid.RowSpan="3" Stroke="#FFA3AEB9" StrokeThickness="{TemplateBinding BorderThickness}" Width="3"/>
+    							<Rectangle x:Name="VerticalTrackRectangleDisabledOverlay" Fill="White" Margin="0,5,0,5" Opacity=".55" RadiusY="1" Grid.Row="0" RadiusX="1" Grid.RowSpan="3" Visibility="Collapsed" Width="3"/>
+    							<RepeatButton x:Name="VerticalTrackLargeChangeDecreaseRepeatButton" IsTabStop="False" Grid.Row="2" Template="{StaticResource RepeatButtonTemplate}" Width="18"/>
+    							<Thumb x:Name="VerticalThumb" Height="11" IsTabStop="True" Grid.Row="1" Width="18"/>
+    							<Rectangle x:Name="VerticalThumbDisabledOverlay" Fill="White" Height="11" Opacity=".55" RadiusY="2" Grid.Row="1" RadiusX="2" Visibility="Collapsed" Width="18"/>
+    							<RepeatButton x:Name="VerticalTrackLargeChangeIncreaseRepeatButton" IsTabStop="False" Grid.Row="0" Template="{StaticResource RepeatButtonTemplate}" Width="18"/>
+    						</Grid>
+    					</Grid>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
 
     </UserControl.Resources>
     <Border BorderThickness="3" BorderBrush="Black" Opacity="0.8"
     CornerRadius="5,5,5,5" VerticalAlignment="Center">
-        <Grid x:Name="LayoutRoot" Background="Black" >
+        <Grid x:Name="LayoutRoot" Background="Black" Height="25" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="150" />
             </Grid.ColumnDefinitions>
 
             <Grid HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="PlayButton2" Content="Play" 
-                         Click="PlayButtonClick" Template="{StaticResource PLayButton}"/>
+                    <ToggleButton x:Name="PlayButton2" Width="20" Click="PlayButtonClick" Template="{StaticResource PlayButton}"/>
                 </StackPanel>
             </Grid>
 
@@ -218,10 +415,18 @@
                     <TextBlock Text="/" FontSize="9" Foreground="White" VerticalAlignment="Center" />
                     <TextBlock x:Name="EndPositionText" Text="00:00" FontSize="9" Foreground="White"
                            VerticalAlignment="Center" />
-                    <TextBlock x:Name="HDEnabled" Margin="5,0,0,0" Foreground="White" Text="HD" VerticalAlignment="Center"  />
-                    
-                    <Button x:Name="FullScreenButton" Margin="5,0,0,0" Width="25" Height="25"
+                    <Button x:Name="Volume" Margin="5,0,0,0" Width="25" Template="{StaticResource VolumeButton}" MouseEnter="Volume_MouseEnter" MouseLeave="Volume_MouseLeave" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" x:Name="HDEnabled" Margin="10,0,0,0" Foreground="White" Text="SD" VerticalAlignment="Center"  />
+                        <ToggleButton Grid.Column="1" x:Name="FullScreenButton" Margin="10,0,0,0" Width="25" Height="25"
                         Template="{StaticResource FusllScreenButtonTemplate}" Click="FullScreenButtonClick" />
+                        <TimeLine:SmoothSlider Grid.Column="0" Grid.ColumnSpan="2" x:Name="VolumeSlider" Visibility="Collapsed" Style="{StaticResource VolumeSlider}" />
+                    </Grid>
+                    
                 </StackPanel>
             </Grid>
 

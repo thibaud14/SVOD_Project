@@ -124,10 +124,12 @@ namespace Web.Player
       switch (Player.MediaElement.CurrentState)
       {
         case SmoothStreamingMediaElementState.Playing:
-          Player.Opacity = 1;
+          //Player.Opacity = 1;
+          TimeLine.PlayButton2.IsChecked = true;
           break;
         case SmoothStreamingMediaElementState.Paused:
-          Player.Opacity = 0.6;
+          //Player.Opacity = 0.6;
+          TimeLine.PlayButton2.IsChecked = false;
           break;
       }
     }
@@ -208,11 +210,13 @@ namespace Web.Player
       {
         LayoutRoot.Width = Application.Current.Host.Content.ActualWidth;
         LayoutRoot.Height = Application.Current.Host.Content.ActualHeight;
+        TimeLine.FullScreenButton.IsChecked = true;
       }
       else
       {
         LayoutRoot.Width = _layoutWidth;
         LayoutRoot.Height = _layoytHeight;
+        TimeLine.FullScreenButton.IsChecked = false;
       }
     }
 

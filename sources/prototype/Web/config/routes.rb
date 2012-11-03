@@ -7,6 +7,7 @@ WebVideo::Application.routes.draw do
   match '/content', to: 'static_pages#content'
   match '/about', to: 'static_pages#about'
   match '/help', to: 'static_pages#help'
+  match '/dashboard', to: 'static_pages#dashboard'
   #user
   match '/signup', to: 'users#new'
   #session

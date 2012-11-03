@@ -264,8 +264,12 @@ namespace Web.Player
 
     private string TimespanToString(TimeSpan time)
     {
-      return string.Format("{0}:{1}:{2}", time.Hours.ToString("00"), time.Minutes.ToString("00"),
+      if(time.Hours != 0)
+        return string.Format("{0}:{1}:{2}", time.Hours.ToString("00"), time.Minutes.ToString("00"),
                            time.Seconds.ToString("00"));
+
+      return string.Format("{0}:{1}", time.Minutes.ToString("00"), time.Seconds.ToString("00"));
+
     }
 
     #endregion

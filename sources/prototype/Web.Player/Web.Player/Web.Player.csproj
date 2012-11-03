@@ -63,6 +63,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Expression.Controls" />
+    <Reference Include="Microsoft.Expression.Drawing" />
     <Reference Include="Microsoft.Web.Media.SmoothStreaming, Version=1.5.938.94, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>

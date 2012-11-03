@@ -36,6 +36,16 @@ class StaticPagesController < ApplicationController
     #end
   end
 
+  def find
+    if !params[:search].nil?
+      render 'layouts/_top' do |page|
+        page.replace_html 'find-result', :partial => 'find'
+      end
+    else
+      redirect_to :back
+    end
+  end
+
   def help
   end
 

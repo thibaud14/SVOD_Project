@@ -1,16 +1,22 @@
-<ul class="nav nav-list">
-  <li class="nav-header">Recent</li>
-  <% @videosRecent.each do |video| %>
-      <li>
-        <%= render video %>
-      </li>
-  <% end %>
-</ul>
-<ul class="nav nav-list">
-  <li class="nav-header">Top Rated</li>
-  <% @videosRated.each do |video| %>
-      <li>
-        <%= render video %>
-      </li>
-  <% end %>
-</ul>
+<div class="menu-container">
+  <ul class="nav nav-list">
+    <li class="nav-header">Recent</li>
+    <% if @videosRecent %>
+        <% @videosRecent.each do |video| %>
+            <li>
+              <%= render video %>
+            </li>
+        <% end %>
+    <% end %>
+  </ul>
+  <ul class="nav nav-list">
+    <li class="nav-header">Top Rated</li>
+    <% if @videosRated %>
+        <% @videosRated.each do |video| %>
+            <li>
+              <%= render video %>
+            </li>
+        <% end %>
+    <% end %>
+  </ul>
+</div>

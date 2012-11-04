@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Net;
 using System.Windows;
+using System.Windows.Browser;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using Microsoft.Web.Media.SmoothStreaming;
 using Web.Player.Commons.Events;
@@ -17,6 +11,7 @@ using Web.Player.Core.View.Message;
 
 namespace Web.Player
 {
+  [ScriptableType]
   public partial class MainPage : UserControl
   {
     private readonly IsolatedStorageSettings _userSettings = IsolatedStorageSettings.ApplicationSettings;
@@ -40,8 +35,8 @@ namespace Web.Player
       Player.MediaElement.MouseLeftButtonDown += MediaElementMouseLeftButtonDown;
       Player.MediaElement.MouseLeftButtonUp += MediaElementMouseLeftButtonUp;
       Player.MediaElement.CurrentStateChanged += MediaElementCurrentStateChanged;
-      Player.MediaElement.HDActivated += MediaElementHDActivated;      
-      
+      Player.MediaElement.HDActivated += MediaElementHDActivated;
+
       Player.MediaElement.ConfigPath = "config.xml";
 
       MouseMove += MainPageMouseMove;
@@ -53,7 +48,7 @@ namespace Web.Player
       TimeLine.Slider.SeekStarted += SliderSeekStarted;
       TimeLine.Slider.SeekCompleted += SliderSeekCompleted;
       TimeLine.Slider.BarClick += SliderBarClick;
-    
+
       TimeLine.FullScreenToggled += TimeLineFullScreenToggled;
       TimeLine.PlayButtonPressed += TimeLinePlayButtonPressed;
 
@@ -64,6 +59,18 @@ namespace Web.Player
 
       _layoutWidth = LayoutRoot.Width;
       _layoytHeight = LayoutRoot.Height;
+    }
+
+    private void UserControlLoaded(object sender, RoutedEventArgs e)
+    {
+       HtmlPage.RegisterScriptableObject("PlayerHandler", this);
+    }
+
+    [ScriptableMember]
+    public void LoadVideo(string url)
+    {
+      Player.MediaElement.SmoothStreamingSource = new Uri(url);
+      Player.MediaElement.Play();
     }
 
     private void MainPageMouseWheel(object sender, MouseWheelEventArgs e)
@@ -135,13 +142,12 @@ namespace Web.Player
       }
     }
 
-    void MediaElementHDActivated(object sender, HDEventArgs e)
+    private void MediaElementHDActivated(object sender, HDEventArgs e)
     {
       if (e.IsHD)
         TimeLine.HDEnabled.Text = "HD";
       else
         TimeLine.HDEnabled.Text = "SD";
-        
     }
 
     #endregion
@@ -262,8 +268,12 @@ namespace Web.Player
 
     private TimeSpan? StorePosition()
     {
-      if (_userSettings.Contains(Player.MediaElement.SmoothStreamingSource.ToString()))
-        return (TimeSpan) _userSettings[Player.MediaElement.SmoothStreamingSource.ToString()];
+      if (Player.MediaElement.SmoothStreamingSource != null)
+      {
+        if (_userSettings.Contains(Player.MediaElement.SmoothStreamingSource.ToString()))
+          return (TimeSpan) _userSettings[Player.MediaElement.SmoothStreamingSource.ToString()];
+      }
+
       return null;
     }
 
@@ -278,14 +288,15 @@ namespace Web.Player
 
     private string TimespanToString(TimeSpan time)
     {
-      if(time.Hours != 0)
+      if (time.Hours != 0)
         return string.Format("{0}:{1}:{2}", time.Hours.ToString("00"), time.Minutes.ToString("00"),
-                           time.Seconds.ToString("00"));
+                             time.Seconds.ToString("00"));
 
       return string.Format("{0}:{1}", time.Minutes.ToString("00"), time.Seconds.ToString("00"));
-
     }
 
     #endregion
+
+  
   }
 }

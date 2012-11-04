@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:View="clr-namespace:Web.Player.Core.View" mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="533">
+    d:DesignHeight="300" d:DesignWidth="533" Loaded="UserControlLoaded">
 
     <Grid x:Name="LayoutRoot" Background="Black" Height="300" Width="533" HorizontalAlignment="Center">
         <Grid.RowDefinitions>

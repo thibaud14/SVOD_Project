@@ -15,16 +15,16 @@
     <br>
     <% @videosCollection.each do |v| %>
         <% if v.position == 1 %>
-            <li class="active"><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>')"><i class="icon-film"></i><%= v.position  %>. <%= v.title %></a></li>
+            <li class="active"><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>')"><%= render v %></a></li>
         <% else %>
-            <li><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>')"><i class="icon-film"></i><%= v.position  %>. <%= v.title %></a></li>
+            <li><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>')"><%= render v %></a></li>
         <% end %>
   <% end %>
 
   <li class="divider"></li>
   <li class="nav-header">Suggestions</li>
     <% @videosSuggestion.each do |v| %>
-        <li><a href="#"><i class="icon-film"></i> <%= v.title %></a></li>
+        <li><a href="#"><%= render v %></a></li>
     <% end %>
   </ul>
 

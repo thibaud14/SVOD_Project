@@ -226,13 +226,13 @@ namespace Web.Player
       {
         LayoutRoot.Width = Application.Current.Host.Content.ActualWidth;
         LayoutRoot.Height = Application.Current.Host.Content.ActualHeight;
-        TimeLine.FullScreenButton.IsChecked = true;
+        //TimeLine.FullScreenButton.IsChecked = true;
       }
       else
       {
         LayoutRoot.Width = _layoutWidth;
         LayoutRoot.Height = _layoytHeight;
-        TimeLine.FullScreenButton.IsChecked = false;
+        //TimeLine.FullScreenButton.IsChecked = false;
       }
     }
 
@@ -241,7 +241,6 @@ namespace Web.Player
       if (e.ClickCount == 2)
       {
         ToggleFullScreen();
-        return;
       }
     }
 

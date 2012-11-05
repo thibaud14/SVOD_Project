@@ -15,9 +15,9 @@
     <br>
     <% @videosCollection.each do |v| %>
         <% if v.position == 1 %>
-            <li class="active"><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>')"><%= render v %></a></li>
+            <li class="active" id="s<%= v.id %>"><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>', '<%= v.id %>')"><%= render v %></a></li>
         <% else %>
-            <li><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>')"><%= render v %></a></li>
+            <li id="s<%= v.id %>"><a href="javascript:void(0)" onclick="LoadVideo('<%= v.video_url %>' ,'<%= v.id %>')"><%= render v %></a></li>
         <% end %>
   <% end %>
 

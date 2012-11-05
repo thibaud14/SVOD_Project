@@ -40,7 +40,8 @@ function onSilverlightError(sender, args) {
     throw new Error(errMsg);
 }
 
-function LoadVideo(url) {
+function LoadVideo(url, id) {
     var control = document.getElementById("playerSL");
     control.content.PlayerHandler.LoadVideo(url);
+    UpdateCurrentVideo(id);
 }

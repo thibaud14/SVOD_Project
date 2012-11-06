@@ -1,4 +1,6 @@
-function UpdateCurrentVideo(id) {
+function UpdateCurrentVideo(id, title) {
+
+    // un-highlight the current item
     var oldElement = document.getElementsByClassName("active");
     for(var i=0; i<oldElement.length; i++)
     {
@@ -9,7 +11,12 @@ function UpdateCurrentVideo(id) {
 
     }
 
+    // highlight the the new item
     var element = document.getElementById("s" + id);
     element.setAttribute("class", "active");
+
+    // update title
+    document.getElementById("tagTitle").innerText = title;
+
 
 }

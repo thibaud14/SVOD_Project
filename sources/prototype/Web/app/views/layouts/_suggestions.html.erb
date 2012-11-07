@@ -24,7 +24,7 @@
   <li class="divider"></li>
   <li class="nav-header">Suggestions</li>
     <% @videosSuggestion.each do |v| %>
-        <li><a href="#"><%= render v %></a></li>
+        <li id="v<%= v.id %>"><a href="javascript:void(0)" onclick="LoadVideo('<%= escape_javascript(v.to_json) %>')"><%= render v %></a></li>
     <% end %>
   </ul>
 

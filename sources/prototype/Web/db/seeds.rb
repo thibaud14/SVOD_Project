@@ -64,3 +64,11 @@ Video.create([
     :collection => @cols.first, :langues => @langs, :subtitles => @subs, :genres => @genres,
   :created_at => nil, :updated_at => nil }],
   :without_protection => true )
+
+
+Video.create([
+                 { :thumbnail_url => "", :type_video => "Film", :title => "Gladiator", :year => 2000, :duration => 155, :country => "USA", :video_url => "http://vps.vincex86.be/videos/Gladiator/Gladiator.ism/manifest", :bo_url => "", :synopsis => "Le général romain Maximus est le plus fidèle soutien de l'empereur Marc Aurèle, qu'il a conduit de victoire en victoire avec une bravoure et un dévouement exemplaires. Jaloux du prestige de Maximus, et plus encore de l'amour que lui voue l'empereur, le fils de MarcAurèle, Commode, s'arroge brutalement le pouvoir, puis ordonne l'arrestation du général et son exécution. Maximus échappe à ses assassins mais ne peut empêcher le massacre de sa famille. Capturé par un marchand d'esclaves, il devient gladiateur et prépare sa vengeance.",
+                   :position => 0, :tagline => "Péplum#Aventure#Drame#Action#Gladiator#", :season => 0, :star_rating_avg => 2,
+                   :collection => @cols.nil?, :langues => @langs, :subtitles => @subs, :genres => @genres,
+                   :created_at => nil, :updated_at => nil }],
+             :without_protection => true )

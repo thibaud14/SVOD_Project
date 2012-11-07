@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
     if !signed_in?
       redirect_to :action => 'home'
     end
-    @videosSuggestion = Video.find_all_by_type_video(params='Serie')
+    @videosSuggestion = Video.find_all_by_type_video(params='Film')
     @videosCollection = Video.find_all_by_type_video(params='Serie')
     @videoCurrent = Video.find(1)
     @videosRated = Video.rated(5)
@@ -17,25 +17,10 @@ class StaticPagesController < ApplicationController
   end
 
   def update_video_collection
-    @videosSuggestion = Video.find_all_by_type_video(params='Serie')
+    @videosSuggestion = Video.find_all_by_type_video(params='Film')
     @videosCollection = Video.find_all_by_type_video(params='Serie')
     @videoCurrent = Video.find(1)
     render :json => @videosCollection
-
-#    respond_to do |wants|
-      #wants.html { redirect_to products_url }
-      #wants.js do
-      #  render :update do |page|
-          # something like this ...
-          #page[dom_id('suggestions')].replace :partial => @videosCollection
-          # OR maybe something like this ...
-          #page[dom_id(@product, "price")].replace_html @product.price
-      #  end
-      #end
- #   end
-    #render :content do |page|
-    #  page.replace_html 'suggestions', :partial => 'suggestions', :object => @videoCollection
-    #end
   end
 
   def find

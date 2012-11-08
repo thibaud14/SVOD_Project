@@ -65,6 +65,12 @@ Video.create([
   :created_at => nil, :updated_at => nil }],
   :without_protection => true )
 
+Video.create([
+                 { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type_video => "Serie", :title => "La solution pirate", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E05/bbts03E05.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "Sheldon tente de faire retrouver à Penny sa bonne humeur avec des chocolats afin qu'elle soit plus gentille envers lui. Raj et Howard décident de s'habiller façon «gothique» afin d'aller draguer dans un night club.", :position => 5, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 4.5,
+                   :collection => @cols.first, :langues => @langs, :subtitles => @subs, :genres => @genres,
+                   :created_at => nil, :updated_at => nil }],
+             :without_protection => true )
+
 
 Video.create([
                  { :thumbnail_url => "", :type_video => "Film", :title => "Gladiator", :year => 2000, :duration => 155, :country => "USA", :video_url => "http://vps.vincex86.be/videos/Gladiator/Gladiator.ism/manifest", :bo_url => "", :synopsis => "Le général romain Maximus est le plus fidèle soutien de l'empereur Marc Aurèle, qu'il a conduit de victoire en victoire avec une bravoure et un dévouement exemplaires. Jaloux du prestige de Maximus, et plus encore de l'amour que lui voue l'empereur, le fils de MarcAurèle, Commode, s'arroge brutalement le pouvoir, puis ordonne l'arrestation du général et son exécution. Maximus échappe à ses assassins mais ne peut empêcher le massacre de sa famille. Capturé par un marchand d'esclaves, il devient gladiateur et prépare sa vengeance.",

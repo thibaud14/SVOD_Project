@@ -66,7 +66,7 @@ Video.create([
   :without_protection => true )
 
 Video.create([
-                 { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type_video => "Serie", :title => "La solution pirate", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E05/bbts03E05.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "Sheldon tente de faire retrouver à Penny sa bonne humeur avec des chocolats afin qu'elle soit plus gentille envers lui. Raj et Howard décident de s'habiller façon «gothique» afin d'aller draguer dans un night club.", :position => 5, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 4.5,
+                 { :thumbnail_url => "http://fanart.tv/fanart/tv/80379/seasonthumb/B_80379%20(3).jpg", :type_video => "Serie", :title => "Le tournoi de cartes", :year => 2009, :duration => 1380, :country => "USA", :video_url => "http://vps.vincex86.be/videos/bbt/3/bbts03E05/bbts03E05.ism/manifest", :bo_url => "http://www.wat.tv/video/the-big-bang-theory-bande-1upid_2exzl_.html", :synopsis => "Sheldon tente de faire retrouver à Penny sa bonne humeur avec des chocolats afin qu'elle soit plus gentille envers lui. Raj et Howard décident de s'habiller façon «gothique» afin d'aller draguer dans un night club.", :position => 5, :tagline => "humour#rire#sheldon#leaonard#tbbt#big#bang", :season => 3, :star_rating_avg => 4.5,
                    :collection => @cols.first, :langues => @langs, :subtitles => @subs, :genres => @genres,
                    :created_at => nil, :updated_at => nil }],
              :without_protection => true )
